@@ -1,0 +1,23 @@
+ok YTYTYTtttyyyfffftt
+
+
+git add .
+git commit -m "readme update" 
+git push origin s8coubis1
+
+
+
+git add .
+git commit -m "jenkinsfile" 
+git push origin s8coubis1
+
+
+
+http://50.19.20.130:8084/
+
+http://50.19.20.130:8083/
+
+
+you expose your application with ip  jenkins agent not ip jenskins controller
+
+make sure you dont have double port .'.
