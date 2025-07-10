@@ -16,17 +16,17 @@ pipeline {
 
     environment {
         DOCKER_HUB_USERNAME = "tchuinsu"
-        ALPHA_APPLICATION_01_REPO = "alpha-application-01"
-        ALPHA_APPLICATION_02_REPO = "alpha-application-02"
+        ALPHA_APPLICATION_01_REPO = "alpha-application-011"
+        ALPHA_APPLICATION_02_REPO = "alpha-application-022"
         DOCKER_CREDENTIAL_ID = 'docker-hub-creds'
     }
 
     parameters {
-        string(name: 'BRANCH_NAME', defaultValue: 's8coubis1', description: 'Git branch to build')
-        string(name: 'APP1_TAG', defaultValue: 'latest', description: 'Tag for Application 01')
-        string(name: 'APP2_TAG', defaultValue: 'latest', description: 'Tag for Application 02')
-        string(name: 'PORT_APP1', defaultValue: '8083', description: 'Host port for App 01')
-        string(name: 'PORT_APP2', defaultValue: '8084', description: 'Host port for App 02')
+        string(name: 'BRANCH_NAME', defaultValue: 's3coubis-01', description: 'Git branch to build')
+        string(name: 'APP1_TAG', defaultValue: 'latest', description: 'Tag for Application 011')
+        string(name: 'APP2_TAG', defaultValue: 'latest', description: 'Tag for Application 022')
+        string(name: 'PORT_APP11', defaultValue: '8085', description: 'Host port for App 011')
+        string(name: 'PORT_APP22', defaultValue: '8086', description: 'Host port for App 022')
         string(name: 'PORT_ON_DOCKER_HOST', defaultValue: '', description: 'Port on Docker host')
     }
 
@@ -58,7 +58,7 @@ pipeline {
         stage('Clone Repository') {
             when {
                 expression {
-                    params.BRANCH_NAME == 's8coubis1'
+                    params.BRANCH_NAME == 's3coubis-01'
                 }
             }
             steps {
@@ -80,19 +80,19 @@ pipeline {
             }
         }
 
-        stage('Build Application 01') {
+        stage('Build Application 011') {
             steps {
                 sh """
-                    docker build -t ${env.DOCKER_HUB_USERNAME}/${env.ALPHA_APPLICATION_01_REPO}:${params.APP1_TAG} -f application-01.Dockerfile .
+                    docker build -t ${env.DOCKER_HUB_USERNAME}/${env.ALPHA_APPLICATION_01_REPO}:${params.APP1_TAG} -f application-011.Dockerfile .
                     docker images
                 """
             }
         }
 
-        stage('Build Application 02') {
+        stage('Build Application 022') {
             steps {
                 sh """
-                    docker build -t ${env.DOCKER_HUB_USERNAME}/${env.ALPHA_APPLICATION_02_REPO}:${params.APP2_TAG} -f application-02.Dockerfile .
+                    docker build -t ${env.DOCKER_HUB_USERNAME}/${env.ALPHA_APPLICATION_02_REPO}:${params.APP2_TAG} -f application-022.Dockerfile .
                     docker images
                 """
             }
@@ -110,28 +110,28 @@ pipeline {
             }
         }
 
-        stage('Push Application 01 to DockerHub') {
+        stage('Push Application 011 to DockerHub') {
             steps {
                 sh "docker push ${env.DOCKER_HUB_USERNAME}/${env.ALPHA_APPLICATION_01_REPO}:${params.APP1_TAG}"
             }
         }
 
-        stage('Push Application 02 to DockerHub') {
+        stage('Push Application 022 to DockerHub') {
             steps {
                 sh "docker push ${env.DOCKER_HUB_USERNAME}/${env.ALPHA_APPLICATION_02_REPO}:${params.APP2_TAG}"
             }
         }
 
-        stage('Deploy Application 01') {
+        stage('Deploy Application 011') {
             steps {
                 script {
                     sh """
                         # Stop and remove container if it exists
-                        docker rm -f app01 || true
+                        docker rm -f app011 || true
         
                         # Run new container
-                        docker run -itd --name app01 -p ${params.PORT_APP1}:80 ${env.DOCKER_HUB_USERNAME}/${env.ALPHA_APPLICATION_01_REPO}:${params.APP1_TAG}
-        
+                        docker run -itd --name app011 -p ${params.PORT_APP11}:80 ${env.DOCKER_HUB_USERNAME}/${env.ALPHA_APPLICATION_01_REPO}:${params.APP1_TAG}
+
                         docker ps
                     """
                 }
@@ -140,15 +140,15 @@ pipeline {
 
 
 
-        stage('Deploy Application 02') {
+        stage('Deploy Application 022') {
             steps {
                 script {
                     sh """
                         # Stop and remove container if it exists
-                        docker rm -f app02 || true
+                        docker rm -f app022 || true
 
                         # Run new container
-                        docker run -itd --name app02 -p ${params.PORT_APP2}:80 ${env.DOCKER_HUB_USERNAME}/${env.ALPHA_APPLICATION_02_REPO}:${params.APP2_TAG}
+                        docker run -itd --name app022 -p ${params.PORT_APP22}:80 ${env.DOCKER_HUB_USERNAME}/${env.ALPHA_APPLICATION_02_REPO}:${params.APP2_TAG}
 
                         docker ps
                     """
