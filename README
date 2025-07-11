@@ -3,7 +3,7 @@ ok YTYTYTtttyyyfffftt
 
 git add .
 git commit -m "readme update" 
-git push origin s8coubis1
+git push origin s3coubis-01
 
 
 
@@ -13,9 +13,9 @@ git push origin s8coubis1
 
 
 
-http://50.19.20.130:8084/
+http://50.19.20.130:8085/
 
-http://50.19.20.130:8083/
+http://50.19.20.130:8086/
 
 
 you expose your application with ip  jenkins agent not ip jenskins controller
