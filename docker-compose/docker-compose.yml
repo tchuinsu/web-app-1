@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   app011:
-    image: tchuinsu/alpha-application-01:latest
+    image: tchuinsu/alpha-application-011:latest
     ports:
       - "8087:80"
     container_name: app011
@@ -11,7 +11,7 @@ services:
       - appnet
 
   app022:
-    image: tchuinsu/alpha-application-02:latest
+    image: tchuinsu/alpha-application-022:latest
     ports:
       - "8088:80"
     container_name: app022
