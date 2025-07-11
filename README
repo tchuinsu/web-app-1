@@ -15,8 +15,15 @@ git push origin s3coubis-01
 
 
 docker-compose up -d
+docker ps
+docker ps -a
+docker stop ID
+docker rm ID
 
 
+
+vim docker-compose.yml ----> paste your  docker compose file here then save and exit
+docker-compose up -d
 
 
 
