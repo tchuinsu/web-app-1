@@ -9,7 +9,14 @@ git push origin s3coubis-01
 
 git add .
 git commit -m "jenkinsfile" 
-git push origin s8coubis1
+git push origin s3coubis-01
+
+
+
+
+docker-compose up -d
+
+
 
 
 

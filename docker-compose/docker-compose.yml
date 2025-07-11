@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  app011:
+    image: tchuinsu/alpha-application-2:latest
+    ports:
+      - "8087:80"
+    container_name: app011
+    restart: unless-stopped
+    networks:
+      - appnet
+
+  app022:
+    image: tchuinsu/alpha-application-3:latest
+    ports:
+      - "8088:80"
+    container_name: app022
+    restart: unless-stopped
+    networks:
+      - appnet
+
+networks:
+  appnet:
+    driver: bridge
