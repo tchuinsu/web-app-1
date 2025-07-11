@@ -67,7 +67,7 @@ pipeline {
                     branches: [[name: "*/${params.BRANCH_NAME}"]],
                         userRemoteConfigs: [[
                             credentialsId: 'github-auth',
-                            url: 'git@github.com:tchuinsu/s8-web-2-Tia.git'
+                            url: 'git@github.com:tchuinsu/web-app-1.git'
                         ]]
                     ])
                 }
