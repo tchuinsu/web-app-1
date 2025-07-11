@@ -6,7 +6,7 @@ services:
     ports:
       - "8087:80"
     container_name: app011
-    restart: unless-stopped
+    restart: always
     networks:
       - appnet
 
@@ -15,7 +15,7 @@ services:
     ports:
       - "8088:80"
     container_name: app022
-    restart: unless-stopped
+    restart: always
     networks:
       - appnet
 
