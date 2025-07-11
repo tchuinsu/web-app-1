@@ -13,9 +13,12 @@ git push origin s8coubis1
 
 
 
-http://50.19.20.130:8085/
+http://50.19.20.130:8085/           jenkins- controller
 
 http://50.19.20.130:8086/
+
+52.201.82.143:8085/    jenkins-agent-node
+
 
 
 you expose your application with ip  jenkins agent not ip jenskins controller
