@@ -28,19 +28,19 @@ docker-compose down
 
 
 
-http://50.19.20.130:8085/           jenkins- controller
+50.19.20.130          jenkins- controller
 
-http://50.19.20.130:8086/
+http://52.201.82.143:8087
 
 52.201.82.143:8085/    jenkins-agent-node
 
 
 with docker compose 
 
-http://50.19.20.130:8087/
+http://52.201.82.143:8087
 
 
-http://50.19.20.130:8088/
+http://52.201.82.143:8088
 you expose your application with ip  jenkins agent not ip jenskins controller
 
 make sure you dont have double port .'.
