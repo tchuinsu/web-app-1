@@ -162,7 +162,7 @@ def customFunction() {
     sh """
         ls -l
         pwd
-        uptimee
+        uptime
     """
 }
 
